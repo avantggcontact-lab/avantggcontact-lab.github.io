@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Ricardo Mendoza - Especialista en Retina</title>
+
+    <!-- FUENTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- TAILWIND CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+    <!-- CONFIGURACIÓN TAILWIND -->
+    <script>
+        const interval = setInterval(() => {
+            if (window.tailwind) {
+                clearInterval(interval);
+                window.tailwind.config = {
+                    theme: {
+                        extend: {
+                            colors: {
+                                'vision-blue': { 50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 600: '#0284c7', 700: '#0369a1', 900: '#0c4a6e' },
+                            },
+                            fontFamily: {
+                                sans: ['Lato', 'sans-serif'],
+                                serif: ['Playfair Display', 'serif'],
+                            },
+                            animation: {
+                                blob: "blob 7s infinite",
+                            },
+                            keyframes: {
+                                blob: {
+                                    "0%": { transform: "translate(0px, 0px) scale(1)" },
+                                    "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+                                    "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+                                    "100%": { transform: "translate(0px, 0px) scale(1)" },
+                                },
+                            },
+                        },
+                    },
+                    plugins: [],
+                };
+            }
+        }, 50);
+    </script>
+
+    <!-- ESTILOS CSS -->
+    <style>
+        #main-header {
+            transition: all 0.4s ease-out;
+            transform: translateY(0);
+        }
+
+        .header-hidden {
+            transform: translateY(-100%);
+        }
+
+        .header-scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        #mobile-menu-overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        #mobile-menu-overlay.is-open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #mobile-menu-panel {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #mobile-menu-overlay.is-open #mobile-menu-panel {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 font-sans text-gray-600">
+
+    <!-- HEADER -->
+    <header id="main-header"
+        class="fixed top-0 left-0 right-0 z-50 bg-white/50 backdrop-blur-sm border-b border-gray-100/50">
+        <nav class="container mx-auto max-w-7xl px-6 lg:px-8 h-28 flex items-center justify-between">
+
+            <!-- LOGO -->
+            <div class="flex-shrink-0 flex items-center justify-start gap-3">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <img src="../image/logovisions.png" alt="Logo Clínica Visión"
+                        class="h-16 w-auto object-contain transition-transform group-hover:scale-105"
+                        onerror="this.onerror=null; this.src='https://placehold.co/180x80/transparent/0284c7?text=VISIÓN';">
+                    <div class="hidden lg:block">
+                        <h1 class="font-serif text-xl font-bold text-vision-blue-900 leading-tight">
+                            Clínica Oftalmológica<br>Visión
+                        </h1>
+                    </div>
+                </a>
+            </div>
+
+            <!-- MENÚ ESCRITORIO -->
+            <div id="main-nav" class="hidden lg:flex items-center gap-8 xl:gap-12">
+                <a href="../index.html"
+                    class="text-sm font-serif font-bold text-gray-800 hover:text-vision-blue-600 uppercase tracking-widest transition-colors">Inicio</a>
+
+                <!-- ATENCIÓN -->
+                <div class="relative dropdown group h-full flex items-center">
+                    <button
+                        class="text-sm font-serif font-bold text-gray-800 hover:text-vision-blue-600 uppercase tracking-widest transition-colors whitespace-nowrap flex items-center gap-1 focus:outline-none">
+                        Atención en Visión Clinic <i data-feather="chevron-down" class="h-4 w-4"></i>
+                    </button>
+                    <div
+                        class="dropdown-menu absolute left-0 top-full mt-0 w-64 bg-white rounded-xl shadow-xl border border-gray-100 py-2 hidden z-50">
+                        <a href="../servicios/cirugiadecataratas.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-vision-blue-50 hover:text-vision-blue-600">Cirugía
+                            de Catarata</a>
+                        <a href="../servicios/cirugialasik.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-vision-blue-50 hover:text-vision-blue-600">Cirugía
+                            Refractiva (LASIK)</a>
+                        <a href="../servicios/cirugiadepterigion.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-vision-blue-50 hover:text-vision-blue-600">Cirugía
+                            de Pterigión</a>
+                        <a href="../servicios/cirugiadeglaucoma.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-vision-blue-50 hover:text-vision-blue-600">Cirugía
+                            de Glaucoma</a>
+                        <a href="../servicios/cirugiadechalazion.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-vision-blue-50 hover:text-vision-blue-600">Cirugía
+                            de Chalazión</a>
+                        <a href="../servicios/cirugiadevetrectomia.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-vision-blue-50 hover:text-vision-blue-600">Vitrectomía</a>
+                        <a href="../servicios/cirugiadeestrabismo.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-vision-blue-50 hover:text-vision-blue-600">Cirugía
+                            de Estrabismo</a>
+                        <a href="../servicios/tratamientodeojoseco.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-vision-blue-50 hover:text-vision-blue-600">Tratamiento
+                            de Ojo Seco</a>
+                    </div>
+                </div>
+
+                <!-- ESPECIALISTAS (Activo) -->
+                <div class="relative dropdown group h-full flex items-center">
+                    <button
+                        class="text-sm font-serif font-bold text-vision-700 hover:text-vision-blue-600 uppercase tracking-widest transition-colors whitespace-nowrap flex items-center gap-1 focus:outline-none border-b-2 border-vision-blue-600">
+                        Nuestros Especialistas <i data-feather="chevron-down" class="h-4 w-4"></i>
+                    </button>
+                    <div
+                        class="dropdown-menu absolute left-0 top-full mt-0 w-64 bg-white rounded-xl shadow-xl border border-gray-100 py-2 hidden z-50">
+                        <a href="cesar.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-vision-blue-50 hover:text-vision-blue-600">Dr.
+                            César Durán</a>
+                        <a href="alejandra.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-vision-blue-50 hover:text-vision-blue-600">Dra.
+                            Alejandra Castro</a>
+                        <a href="edgar.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-vision-blue-50 hover:text-vision-blue-600">Dr.
+                            Edgard Paredes</a>
+                        <a href="ricardo.html"
+                            class="block px-4 py-2 text-sm font-bold text-vision-blue-600 bg-vision-blue-50">Dr. Ricardo
+                            Mendoza</a>
+                        <a href="lucia.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-vision-blue-50 hover:text-vision-blue-600">Dra.
+                            Lucía Torres</a>
+                    </div>
+                </div>
+
+                <a href="../contactanos.html"
+                    class="text-sm font-serif font-bold text-gray-800 hover:text-vision-blue-600 uppercase tracking-widest transition-colors">Contáctanos</a>
+            </div>
+
+            <!-- BOTÓN MÓVIL -->
+            <div class="lg:hidden flex justify-end">
+                <button id="mobile-menu-button"
+                    class="text-gray-800 p-2 hover:bg-gray-100 rounded-full transition-colors"><i data-feather="menu"
+                        class="h-8 w-8"></i></button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MENÚ MÓVIL -->
+    <div id="mobile-menu-overlay"
+        class="fixed inset-0 z-40 flex justify-end bg-black/30 backdrop-blur-sm opacity-0 pointer-events-none">
+        <div id="mobile-menu-panel"
+            class="w-full max-w-sm h-full bg-white shadow-2xl transform translate-x-full flex flex-col">
+            <div class="flex items-center justify-between p-6 border-b border-gray-100">
+                <span class="font-serif text-xl text-vision-blue-800 italic">Menú</span>
+                <button id="mobile-menu-close-button"
+                    class="text-gray-500 hover:text-vision-blue-600 p-2 rounded-full hover:bg-gray-50"><i
+                        data-feather="x" class="h-6 w-6"></i></button>
+            </div>
+            <div class="p-8 flex flex-col space-y-6 overflow-y-auto">
+                <a href="../index.html"
+                    class="font-serif text-xl text-gray-800 hover:text-vision-blue-600 transition-colors">Inicio</a>
+                <a href="../index.html#atencion"
+                    class="font-serif text-xl text-gray-800 hover:text-vision-blue-600 transition-colors">Atención en
+                    Visión Clinic</a>
+                <a href="../index.html#especialistas"
+                    class="font-serif text-xl text-gray-800 hover:text-vision-blue-600 transition-colors">Nuestros
+                    Especialistas</a>
+                <a href="../contactanos.html"
+                    class="font-serif text-xl text-gray-800 hover:text-vision-blue-600 transition-colors">Contáctanos</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTÓN TELEGRAM -->
+    <div class="fixed bottom-8 right-8 z-50 flex flex-col items-end group">
+        <div
+            class="mb-3 mr-1 bg-white text-gray-800 px-4 py-2 rounded-xl shadow-xl border border-gray-100 relative animate-bounce origin-bottom-right">
+            <p class="text-sm font-bold text-vision-blue-900 whitespace-nowrap font-sans">Agenda con ANA</p>
+            <div
+                class="absolute -bottom-1 right-4 w-3 h-3 bg-white transform rotate-45 border-r border-b border-gray-100">
+            </div>
+        </div>
+        <a href="https://web.telegram.org/k/#@OftalmologiiaVisionbot" target="_blank"
+            class="flex items-center justify-center w-16 h-16 bg-[#229ED9] text-white rounded-full shadow-2xl hover:scale-110 transition-all duration-300">
+            <svg class="w-8 h-8 fill-current translate-x-[-2px] translate-y-[1px]" viewBox="0 0 24 24">
+                <path
+                    d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42l10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001l-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15l4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z" />
+            </svg>
+        </a>
+    </div>
+
+    <!-- PERFIL DOCTOR -->
+    <section class="relative bg-white pt-44 pb-20 lg:pt-60 lg:pb-24">
+        <div class="container mx-auto max-w-6xl px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-16 items-center lg:items-start">
+
+                <!-- Foto y Datos Rápidos -->
+                <div class="w-full lg:w-1/3 flex flex-col items-center text-center lg:sticky lg:top-40">
+                    <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-vision-blue-50 shadow-xl mb-8">
+                        <!-- IMAGEN DOCTOR -->
+                        <img src="../image/ricardo.png" alt="Dr. Ricardo Mendoza" class="w-full h-full object-cover">
+                    </div>
+                    <h1 class="text-3xl font-serif font-bold text-gray-900 mb-2">Dr. Ricardo Mendoza</h1>
+                    <p class="text-lg font-medium text-vision-blue-600 mb-4">Retina, Mácula y Vítreo</p>
+                    <div
+                        class="flex flex-col gap-1 text-sm text-gray-500 bg-gray-50 py-3 px-6 rounded-lg border border-gray-100 w-full max-w-xs">
+                        <p><strong>CMP:</strong> 65432</p>
+                        <p><strong>RNE:</strong> 31234</p>
+                    </div>
+                </div>
+
+                <!-- Información Detallada -->
+                <div class="w-full lg:w-2/3">
+                    <div class="prose prose-lg text-gray-600 max-w-none">
+                        <h2 class="font-serif text-gray-900">Sobre el Dr. Mendoza</h2>
+                        <p>
+                            El Dr. Ricardo Mendoza es nuestro experto referente en enfermedades de la retina y el
+                            vítreo. Con una formación altamente especializada, se dedica al tratamiento médico y
+                            quirúrgico de patologías complejas que afectan la parte posterior del ojo, donde reside la
+                            visión central y detallada.
+                        </p>
+                        <p>
+                            Su destreza quirúrgica abarca desde vitrectomías de alta precisión hasta el manejo del
+                            desprendimiento de retina y agujeros maculares. El Dr. Mendoza es conocido por su
+                            meticulosidad en el quirófano y su capacidad para explicar diagnósticos complejos de manera
+                            sencilla a sus pacientes.
+                        </p>
+
+                        <h3 class="font-serif text-gray-900 mt-12">Áreas de Especialización</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 not-prose my-6">
+                            <div
+                                class="flex items-center gap-3 p-4 bg-vision-blue-50 rounded-xl border border-vision-blue-100">
+                                <div class="bg-white p-2 rounded-full text-vision-blue-600"><i data-feather="activity"
+                                        class="w-5 h-5"></i></div>
+                                <span class="font-bold text-gray-800">Cirugía de Vitrectomía</span>
+                            </div>
+                            <div
+                                class="flex items-center gap-3 p-4 bg-vision-blue-50 rounded-xl border border-vision-blue-100">
+                                <div class="bg-white p-2 rounded-full text-vision-blue-600"><i data-feather="layers"
+                                        class="w-5 h-5"></i></div>
+                                <span class="font-bold text-gray-800">Retina y Mácula</span>
+                            </div>
+                            <div
+                                class="flex items-center gap-3 p-4 bg-vision-blue-50 rounded-xl border border-vision-blue-100">
+                                <div class="bg-white p-2 rounded-full text-vision-blue-600"><i data-feather="eye"
+                                        class="w-5 h-5"></i></div>
+                                <span class="font-bold text-gray-800">Desprendimiento de Retina</span>
+                            </div>
+                        </div>
+
+                        <h3 class="font-serif text-gray-900 mt-12">Horarios de Atención</h3>
+                        <div class="overflow-hidden border border-gray-200 rounded-xl not-prose shadow-sm">
+                            <table class="min-w-full bg-white">
+                                <thead class="bg-gray-50 text-gray-900">
+                                    <tr>
+                                        <th class="py-3 px-4 text-left text-sm font-bold">Día</th>
+                                        <th class="py-3 px-4 text-left text-sm font-bold">Horario</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-sm text-gray-600">
+                                    <tr class="border-t border-gray-100">
+                                        <td class="py-3 px-4 font-medium">Sábado</td>
+                                        <td class="py-3 px-4">09:00 AM - 02:00 PM</td>
+                                    </tr>
+                                    <tr class="border-t border-gray-100">
+                                        <td class="py-3 px-4 font-medium">Domingo</td>
+                                        <td class="py-3 px-4">10:00 AM - 01:00 PM</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="mt-12">
+                            <a href="https://web.telegram.org/k/#@OftalmologiiaVisionbot" target="_blank"
+                                class="inline-block w-full md:w-auto text-center rounded-lg bg-vision-blue-600 px-8 py-4 text-base font-bold text-white shadow-lg hover:bg-vision-blue-700 transition-all hover:scale-105">
+                                Agendar Cita con el Dr. Mendoza
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-gray-400 py-16">
+        <div class="container mx-auto max-w-7xl px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-8 md:mb-0">
+                <!-- RUTA IMAGEN -->
+                <img src="../image/logovisions.png" alt="Logo Clínica Oftalmológica Visión"
+                    class="h-24 w-auto opacity-80 grayscale brightness-200"
+                    onerror="this.onerror=null; this.src='https://placehold.co/180x60/404040/9ca3af?text=Visión';">
+            </div>
+            <div class="text-center md:text-right text-sm font-light">
+                <p>© 2024 Clínica Oftalmológica Visión. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.getElementById('main-header');
+            let lastScrollY = window.scrollY;
+            window.addEventListener('scroll', () => {
+                const currentScrollY = window.scrollY;
+                if (currentScrollY < lastScrollY) header.classList.remove('header-hidden');
+                else if (currentScrollY > lastScrollY && currentScrollY > 100) header.classList.add('header-hidden');
+                if (currentScrollY > 50) header.classList.add('header-scrolled');
+                else header.classList.remove('header-scrolled');
+                lastScrollY = currentScrollY;
+            });
+
+            const btn = document.getElementById('mobile-menu-button');
+            const overlay = document.getElementById('mobile-menu-overlay');
+            const close = document.getElementById('mobile-menu-close-button');
+            const toggleMenu = (show) => {
+                if (!overlay) return;
+                overlay.classList.toggle('is-open', show);
+                document.body.style.overflow = show ? 'hidden' : 'auto';
+            };
+            if (btn) btn.addEventListener('click', () => toggleMenu(true));
+            if (close) close.addEventListener('click', () => toggleMenu(false));
+            if (overlay) overlay.addEventListener('click', (e) => { if (e.target === overlay) toggleMenu(false); });
+
+            feather.replace();
+        });
+    </script>
+</body>
+
+</html>

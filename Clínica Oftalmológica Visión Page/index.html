@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Oftalmológica Visión - Inicio</title>
+
+    <!-- FUENTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- TAILWIND CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+    <!-- CONFIGURACIÓN TAILWIND -->
+    <script>
+        const interval = setInterval(() => {
+            if (window.tailwind) {
+                clearInterval(interval);
+                window.tailwind.config = {
+                    theme: {
+                        extend: {
+                            colors: {
+                                'vision-blue': { 50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 600: '#0284c7', 700: '#0369a1', 900: '#0c4a6e' },
+                            },
+                            fontFamily: {
+                                sans: ['Lato', 'sans-serif'],
+                                serif: ['Playfair Display', 'serif'],
+                            },
+                            animation: {
+                                blob: "blob 7s infinite",
+                            },
+                            keyframes: {
+                                blob: {
+                                    "0%": { transform: "translate(0px, 0px) scale(1)" },
+                                    "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+                                    "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+                                    "100%": { transform: "translate(0px, 0px) scale(1)" },
+                                },
+                            },
+                        },
+                    },
+                    plugins: [],
+                };
+            }
+        }, 50);
+    </script>
+
+    <!-- ESTILOS CSS -->
+    <style>
+        /* General */
+        #main-header {
+            transition: all 0.4s ease-out;
+            transform: translateY(0);
+        }
+
+        .header-hidden {
+            transform: translateY(-100%);
+        }
+
+        .header-scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Dropdown (Menú Desplegable) */
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        /* Menú Móvil */
+        #mobile-menu-overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        #mobile-menu-overlay.is-open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #mobile-menu-panel {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #mobile-menu-overlay.is-open #mobile-menu-panel {
+            transform: translateX(0);
+        }
+
+        /* Carruseles */
+        #doctors-carousel {
+            scroll-snap-type: x mandatory;
+        }
+
+        .doctor-card {
+            scroll-snap-align: center;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 font-sans text-gray-600">
+
+    <!-- HEADER -->
+    <header id="main-header"
+        class="fixed top-0 left-0 right-0 z-50 bg-white/50 backdrop-blur-sm border-b border-gray-100/50">
+        <nav class="container mx-auto max-w-7xl px-6 lg:px-8 h-28 flex items-center justify-between">
+
+            <!-- LOGO -->
+            <div class="flex-shrink-0 flex items-center justify-start gap-3">
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <img src="image/logovisions.png" alt="Logo Clínica Visión"
+                        class="h-16 w-auto object-contain transition-transform group-hover:scale-105"
+                        onerror="this.onerror=null; this.src='https://placehold.co/180x80/transparent/0284c7?text=VISIÓN';">
+                    <div class="hidden lg:block">
+                        <h1 class="font-serif text-xl font-bold text-vision-blue-900 leading-tight">
+                            Clínica Oftalmológica<br>Visión
+                        </h1>
+                    </div>
+                </a>
+            </div>
+
+            <!-- MENÚ ESCRITORIO -->
+            <div id="main-nav" class="hidden lg:flex items-center gap-8 xl:gap-12">
+
+                <!-- 1. INICIO -->
+                <a href="index.html"
+                    class="text-sm font-serif font-bold text-vision-blue-700 uppercase tracking-widest transition-colors border-b-2 border-vision-blue-600">
+                    Inicio
+                </a>
+
+                <!-- 2. ATENCIÓN (DESPLEGABLE) -->
+                <div class="relative dropdown group h-full flex items-center">
+                    <button
+                        class="text-sm font-serif font-bold text-gray-800 hover:text-vision-blue-600 uppercase tracking-widest transition-colors whitespace-nowrap flex items-center gap-1 focus:outline-none">
+                        Atención en Visión Clinic <i data-feather="chevron-down" class="h-4 w-4"></i>
+                    </button>
+
+                    <!-- Menú Flotante de Procedimientos -->
+                    <div
+                        class="dropdown-menu absolute left-0 top-full mt-0 w-64 bg-white rounded-xl shadow-xl border border-gray-100 py-2 hidden z-50">
+                        <a href="servicios/cirugiadecataratas.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-vision-blue-50 hover:text-vision-blue-600">Cirugía
+                            de Catarata</a>
+                        <a href="servicios/cirugialasik.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-vision-blue-50 hover:text-vision-blue-600">Cirugía
+                            Refractiva (LASIK)</a>
+                        <a href="servicios/cirugiadepterigion.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-vision-blue-50 hover:text-vision-blue-600">Cirugía
+                            de Pterigión</a>
+                        <a href="servicios/cirugiadeglaucoma.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-vision-blue-50 hover:text-vision-blue-600">Cirugía
+                            de Glaucoma</a>
+                        <a href="servicios/cirugiadechalazion.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-vision-blue-50 hover:text-vision-blue-600">Cirugía
+                            de Chalazión</a>
+                        <a href="servicios/cirugiadevetrectomia.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-vision-blue-50 hover:text-vision-blue-600">Vitrectomía</a>
+                        <a href="servicios/cirugiadeestrabismo.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-vision-blue-50 hover:text-vision-blue-600">Cirugía
+                            de Estrabismo</a>
+                        <a href="servicios/tratamientodeojoseco.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-vision-blue-50 hover:text-vision-blue-600">Tratamiento
+                            de Ojo Seco</a>
+                    </div>
+                </div>
+
+                <!-- 3. ESPECIALISTAS (DESPLEGABLE) -->
+                <div class="relative dropdown group h-full flex items-center">
+                    <button
+                        class="text-sm font-serif font-bold text-gray-800 hover:text-vision-blue-600 uppercase tracking-widest transition-colors whitespace-nowrap flex items-center gap-1 focus:outline-none">
+                        Nuestros Especialistas <i data-feather="chevron-down" class="h-4 w-4"></i>
+                    </button>
+
+                    <!-- Menú Flotante de Doctores -->
+                    <div
+                        class="dropdown-menu absolute left-0 top-full mt-0 w-64 bg-white rounded-xl shadow-xl border border-gray-100 py-2 hidden z-50">
+                        <a href="doctores/cesar.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-vision-blue-50 hover:text-vision-blue-600">Dr.
+                            César Durán</a>
+                        <a href="doctores/alejandra.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-vision-blue-50 hover:text-vision-blue-600">Dra.
+                            Alejandra Castro</a>
+                        <a href="doctores/edgar.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-vision-blue-50 hover:text-vision-blue-600">Dr.
+                            Edgard Paredes</a>
+                        <a href="doctores/ricardo.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-vision-blue-50 hover:text-vision-blue-600">Dr.
+                            Ricardo Mendoza</a>
+                        <a href="doctores/lucia.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-vision-blue-50 hover:text-vision-blue-600">Dra.
+                            Lucía Torres</a>
+                    </div>
+                </div>
+
+                <!-- 4. CONTACTO -->
+                <a href="contactanos.html"
+                    class="text-sm font-serif font-bold text-gray-800 hover:text-vision-blue-600 uppercase tracking-widest transition-colors">
+                    Contáctanos
+                </a>
+            </div>
+
+            <!-- BOTÓN MÓVIL -->
+            <div class="lg:hidden flex justify-end">
+                <button id="mobile-menu-button"
+                    class="text-gray-800 p-2 hover:bg-gray-100 rounded-full transition-colors"><i data-feather="menu"
+                        class="h-8 w-8"></i></button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MENÚ MÓVIL -->
+    <div id="mobile-menu-overlay"
+        class="fixed inset-0 z-40 flex justify-end bg-black/30 backdrop-blur-sm opacity-0 pointer-events-none">
+        <div id="mobile-menu-panel"
+            class="w-full max-w-sm h-full bg-white shadow-2xl transform translate-x-full flex flex-col">
+            <div class="flex items-center justify-between p-6 border-b border-gray-100">
+                <span class="font-serif text-xl text-vision-blue-800 italic">Menú</span>
+                <button id="mobile-menu-close-button"
+                    class="text-gray-500 hover:text-vision-blue-600 p-2 rounded-full hover:bg-gray-50"><i
+                        data-feather="x" class="h-6 w-6"></i></button>
+            </div>
+            <div class="p-8 flex flex-col space-y-6 overflow-y-auto">
+                <a href="index.html"
+                    class="font-serif text-xl text-gray-800 hover:text-vision-blue-600 transition-colors">Inicio</a>
+                <a href="#atencion"
+                    class="font-serif text-xl text-gray-800 hover:text-vision-blue-600 transition-colors">Atención en
+                    Visión Clinic</a>
+                <a href="#especialistas"
+                    class="font-serif text-xl text-gray-800 hover:text-vision-blue-600 transition-colors">Nuestros
+                    Especialistas</a>
+                <a href="contactanos.html"
+                    class="font-serif text-xl text-gray-800 hover:text-vision-blue-600 transition-colors">Contáctanos</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTÓN TELEGRAM -->
+    <div class="fixed bottom-8 right-8 z-50 flex flex-col items-end group">
+        <div
+            class="mb-3 mr-1 bg-white text-gray-800 px-4 py-2 rounded-xl shadow-xl border border-gray-100 relative animate-bounce origin-bottom-right">
+            <p class="text-sm font-bold text-vision-blue-900 whitespace-nowrap font-sans">Agenda con ANA</p>
+            <div
+                class="absolute -bottom-1 right-4 w-3 h-3 bg-white transform rotate-45 border-r border-b border-gray-100">
+            </div>
+        </div>
+        <a href="https://web.telegram.org/k/#@OftalmologiiaVisionbot" target="_blank"
+            class="flex items-center justify-center w-16 h-16 bg-[#229ED9] text-white rounded-full shadow-2xl hover:scale-110 transition-all duration-300">
+            <svg class="w-8 h-8 fill-current translate-x-[-2px] translate-y-[1px]" viewBox="0 0 24 24">
+                <path
+                    d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42l10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001l-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15l4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z" />
+            </svg>
+        </a>
+    </div>
+
+    <!-- SECCIÓN HERO -->
+    <section id="inicio"
+        class="relative bg-gradient-to-br from-vision-blue-600 to-vision-blue-800 pt-44 pb-24 lg:pt-60 lg:pb-32">
+        <div class="container mx-auto max-w-7xl px-6 lg:px-8 relative z-10 text-center lg:text-left">
+            <div class="max-w-4xl">
+                <h1 class="font-serif text-5xl font-bold tracking-tight text-white sm:text-7xl mb-6">Tecnología y
+                    Calidez <br> <span class="text-vision-blue-200">para tu Visión</span></h1>
+                <p
+                    class="mt-6 text-lg leading-8 text-gray-900 font-medium max-w-2xl mx-auto lg:mx-0 bg-white/10 backdrop-blur-sm p-4 rounded-lg lg:bg-transparent lg:p-0 lg:backdrop-blur-none">
+                    En Clínica Oftalmológica Visión, combinamos la más alta especialización médica con un trato cercano
+                    para cuidar lo más valioso: tu vista.
+                </p>
+                <div class="mt-8 flex justify-center lg:justify-start gap-4">
+                    <a href="https://web.telegram.org/k/#@OftalmologiiaVisionbot" target="_blank"
+                        class="rounded-full bg-white text-vision-blue-700 font-bold px-8 py-3 shadow-lg hover:bg-gray-100 transition-all">
+                        Agendar Evaluación
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN HISTORIA -->
+    <section id="nuestra-historia" class="bg-white py-20 sm:py-32">
+        <div class="container mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="w-full lg:w-1/2 lg:pr-8">
+                    <span class="text-sm font-bold text-vision-blue-600 tracking-widest uppercase font-serif">Sobre
+                        Nosotros</span>
+                    <h2 class="mt-4 text-4xl font-serif font-bold text-gray-900 sm:text-5xl">Más de 20 años <br>
+                        Iluminando Miradas</h2>
+                    <p class="mt-6 text-lg leading-relaxed text-gray-600">Fundada en 2003 por el Dr. Armando Fuentes
+                        (padre), Clínica Visión nació con un solo propósito: ofrecer una alternativa de salud ocular de
+                        clase mundial.</p>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="image/saladeespera.png" alt="Sala de espera"
+                            class="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN SEDE -->
+    <section id="nuestra-sede" class="bg-vision-blue-50 py-24 sm:py-32 overflow-hidden">
+        <div class="container mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-16 lg:gap-24">
+                <div class="w-full lg:w-1/2 relative">
+                    <div
+                        class="absolute -top-4 -right-4 w-72 h-72 bg-vision-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob">
+                    </div>
+                    <div
+                        class="absolute -bottom-4 -left-4 w-72 h-72 bg-vision-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000">
+                    </div>
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                        <img src="image/fachada.png" alt="Equipamiento médico de última generación"
+                            class="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div
+                        class="absolute -bottom-6 -left-6 bg-white p-5 rounded-xl shadow-xl max-w-xs hidden md:block border border-gray-100">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-vision-blue-50 p-3 rounded-full text-vision-blue-600"><i
+                                    data-feather="shield" class="h-6 w-6"></i></div>
+                            <div>
+                                <p class="text-sm font-bold text-gray-900">Seguridad Garantizada</p>
+                                <p class="text-xs text-gray-500 mt-0.5">Quirófanos con filtros HEPA.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 lg:pr-8">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-vision-blue-100 text-vision-blue-600 text-xs font-bold tracking-widest uppercase mb-6 shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-vision-blue-600"></span> Infraestructura
+                    </div>
+                    <h2 class="text-4xl font-serif font-bold text-gray-900 sm:text-5xl mb-6 leading-tight">Tecnología de
+                        Vanguardia <br> <span class="text-vision-blue-600">al Servicio de tus Ojos</span></h2>
+                    <div class="space-y-6 text-lg text-gray-600 leading-relaxed">
+                        <p>Nuestra sede en Cajamarca no es solo una clínica, es un centro integral diseñado para la
+                            excelencia oftalmológica. Con más de <strong>2,000 m² de infraestructura moderna</strong>,
+                            hemos creado un entorno donde la precisión médica se encuentra con el confort del paciente.
+                        </p>
+                        <p>Desde el momento en que ingresas, te recibe un ambiente cálido y eficiente. Nuestros
+                            consultorios están equipados con sistemas de diagnóstico digital interconectados,
+                            permitiendo que tu historial esté disponible al instante.</p>
+                    </div>
+                    <div class="mt-10 grid grid-cols-1 gap-4">
+                        <div
+                            class="flex items-start gap-4 p-4 rounded-xl bg-white border border-vision-blue-50 shadow-sm hover:shadow-md transition-all duration-300">
+                            <div
+                                class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-vision-blue-100 text-vision-blue-700 font-bold font-serif text-lg">
+                                1</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Recepción y Óptica Premium</h4>
+                                <p class="text-sm text-gray-600 mt-1">Atención rápida y selección exclusiva de monturas.
+                                </p>
+                            </div>
+                        </div>
+                        <div
+                            class="flex items-start gap-4 p-4 rounded-xl bg-white border border-vision-blue-50 shadow-sm hover:shadow-md transition-all duration-300">
+                            <div
+                                class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-vision-blue-100 text-vision-blue-700 font-bold font-serif text-lg">
+                                2</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Diagnóstico Avanzado</h4>
+                                <p class="text-sm text-gray-600 mt-1">Salas de Tomografía (OCT) y Campimetría.</p>
+                            </div>
+                        </div>
+                        <div
+                            class="flex items-start gap-4 p-4 rounded-xl bg-white border border-vision-blue-50 shadow-sm hover:shadow-md transition-all duration-300">
+                            <div
+                                class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-vision-blue-100 text-vision-blue-700 font-bold font-serif text-lg">
+                                3</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Centro Quirúrgico</h4>
+                                <p class="text-sm text-gray-600 mt-1">Quirófanos equipados con microscopios ZEISS.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN ATENCIÓN (GALERÍA ROTATIVA) -->
+    <section id="atencion" class="bg-white py-20 sm:py-32 overflow-hidden">
+        <div class="container mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-sm font-bold text-vision-blue-600 tracking-widest uppercase font-serif">Nuestros
+                    Servicios</span>
+                <h2 class="mt-4 text-4xl font-serif font-bold text-gray-900 sm:text-5xl">Atención en Visión Clinic</h2>
+                <p class="mt-4 text-lg text-gray-600 font-light">Tecnología de vanguardia para cada necesidad visual.
+                </p>
+            </div>
+            <div class="relative w-full">
+                <div
+                    class="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none">
+                </div>
+                <div
+                    class="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none">
+                </div>
+                <div id="services-marquee"
+                    class="flex gap-6 overflow-x-auto hide-scrollbar pb-8 cursor-grab active:cursor-grabbing"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN ESPECIALISTAS -->
+    <section id="especialistas" class="bg-gray-50 py-20 sm:py-32">
+        <div class="container mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-sm font-bold text-vision-blue-600 tracking-widest uppercase font-serif">Equipo
+                    Médico</span>
+                <h2 class="mt-4 text-4xl font-serif font-bold text-gray-900 sm:text-5xl">Expertos en su Visión</h2>
+            </div>
+            <div class="relative">
+                <button id="prev-btn"
+                    class="absolute left-0 top-1/2 -translate-y-1/2 z-20 p-3 bg-white rounded-full shadow-lg hover:bg-vision-blue-50 text-gray-700 transition-all"><i
+                        data-feather="chevron-left" class="h-6 w-6"></i></button>
+                <div id="doctors-carousel" class="flex overflow-x-auto gap-8 py-8 scroll-smooth"
+                    style="scrollbar-width: none; -ms-overflow-style: none;">
+
+                    <!-- DOCTORES -->
+                    <div
+                        class="doctor-card flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                        <div class="relative w-40 h-40 mx-auto mb-6"><img
+                                class="w-full h-full rounded-full object-cover border-4 border-vision-blue-50"
+                                src="image/cesar.png" alt="Dr. César Durán"></div>
+                        <h3 class="text-xl font-serif font-bold text-gray-900">Dr. César Durán</h3>
+                        <p class="text-sm font-bold text-vision-blue-600 uppercase tracking-wide mt-2">Cirugía de
+                            Catarata, Cirugía Refractiva</p>
+                        <div class="mt-4 pt-4 border-t border-gray-100 text-xs text-gray-500">
+                            <p>CMP: 19853 | RNE: 8809</p>
+                        </div>
+                    </div>
+                    <div
+                        class="doctor-card flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                        <div class="relative w-40 h-40 mx-auto mb-6"><img
+                                class="w-full h-full rounded-full object-cover border-4 border-vision-blue-50"
+                                src="image/alejandra.png" alt="Dra. Alejandra Castro"></div>
+                        <h3 class="text-xl font-serif font-bold text-gray-900">Dra. Alejandra Castro</h3>
+                        <p class="text-sm font-bold text-vision-blue-600 uppercase tracking-wide mt-2">Glaucoma,
+                            Chalazión</p>
+                        <div class="mt-4 pt-4 border-t border-gray-100 text-xs text-gray-500">
+                            <p>CMP: 88109 | RNE: 49306</p>
+                        </div>
+                    </div>
+                    <div
+                        class="doctor-card flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                        <div class="relative w-40 h-40 mx-auto mb-6"><img
+                                class="w-full h-full rounded-full object-cover border-4 border-vision-blue-50"
+                                src="image/edgar.png" alt="Dr. Edgard Paredes"></div>
+                        <h3 class="text-xl font-serif font-bold text-gray-900">Dr. Edgard Paredes</h3>
+                        <p class="text-sm font-bold text-vision-blue-600 uppercase tracking-wide mt-2">Cirugía de
+                            Pterigión</p>
+                        <div class="mt-4 pt-4 border-t border-gray-100 text-xs text-gray-500">
+                            <p>CMP: 73864 | RNE: 45338</p>
+                        </div>
+                    </div>
+                    <div
+                        class="doctor-card flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                        <div class="relative w-40 h-40 mx-auto mb-6"><img
+                                class="w-full h-full rounded-full object-cover border-4 border-vision-blue-50"
+                                src="image/ricardo.png" alt="Dr. Ricardo Mendoza"></div>
+                        <h3 class="text-xl font-serif font-bold text-gray-900">Dr. Ricardo Mendoza</h3>
+                        <p class="text-sm font-bold text-vision-blue-600 uppercase tracking-wide mt-2">Retina, Mácula
+                        </p>
+                        <div class="mt-4 pt-4 border-t border-gray-100 text-xs text-gray-500">
+                            <p>CMP: 65432 | RNE: 31234</p>
+                        </div>
+                    </div>
+                    <div
+                        class="doctor-card flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                        <div class="relative w-40 h-40 mx-auto mb-6"><img
+                                class="w-full h-full rounded-full object-cover border-4 border-vision-blue-50"
+                                src="image/lucia.png" alt="Dra. Lucía Torres"></div>
+                        <h3 class="text-xl font-serif font-bold text-gray-900">Dra. Lucía Torres</h3>
+                        <p class="text-sm font-bold text-vision-blue-600 uppercase tracking-wide mt-2">Oftalmología
+                            Pediátrica</p>
+                        <div class="mt-4 pt-4 border-t border-gray-100 text-xs text-gray-500">
+                            <p>CMP: 81234 | RNE: 47890</p>
+                        </div>
+                    </div>
+                </div>
+                <button id="next-btn"
+                    class="absolute right-0 top-1/2 -translate-y-1/2 z-20 p-3 bg-white rounded-full shadow-lg hover:bg-vision-blue-50 text-gray-700 transition-all"><i
+                        data-feather="chevron-right" class="h-6 w-6"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN CONTACTO (HOME RESUMIDO) -->
+    <section id="contacto" class="relative bg-white py-20 sm:py-32">
+        <div class="container mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span
+                    class="text-sm font-bold text-vision-blue-600 tracking-widest uppercase font-serif">Contacto</span>
+                <h2 class="mt-4 text-4xl font-serif font-bold text-gray-900 sm:text-5xl">Estamos para servirte</h2>
+            </div>
+            <div class="grid grid-cols-1 gap-16 lg:grid-cols-2">
+                <div>
+                    <div class="space-y-6 text-lg text-gray-600">
+                        <div class="flex items-start gap-4">
+                            <div class="mt-1 bg-vision-blue-50 p-3 rounded-full text-vision-blue-600"><i
+                                    data-feather="map-pin" class="h-6 w-6"></i></div>
+                            <div><span class="block font-bold text-gray-900">Dirección</span><span>Jr. La Pampa 2395,
+                                    Cajamarca, Perú</span></div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="mt-1 bg-vision-blue-50 p-3 rounded-full text-vision-blue-600"><i
+                                    data-feather="phone" class="h-6 w-6"></i></div>
+                            <div><span class="block font-bold text-gray-900">Teléfonos</span><span>(076) 445-6789</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="mt-1 bg-vision-blue-50 p-3 rounded-full text-vision-blue-600"><i
+                                    data-feather="mail" class="h-6 w-6"></i></div>
+                            <div><span
+                                    class="block font-bold text-gray-900">Email</span><span>citas@clinicavision.pe</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-10 overflow-hidden rounded-2xl shadow-lg border border-gray-100">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.99261899557!2d-77.0309836851868!3d-12.11292199142348!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b81a719d363d%3A0x623919e31950d879!2sAvenida%20Larco%2C%20Miraflores%2015074%2C%20Peru!5e0!3m2!1sen!2sus!4v1678886450123!5m2!1sen!2sus"
+                            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+
+                <!-- FORMULARIO EN HOME (MANTENIDO CON N8N) -->
+                <div>
+                    <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100 shadow-sm">
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-6">Escríbenos</h3>
+                        <form id="n8n-home-form" class="space-y-6">
+                            <div><label class="block text-sm font-bold text-gray-700 mb-2">Nombre Completo</label><input
+                                    type="text" name="name" required
+                                    class="block w-full rounded-lg border-gray-200 py-3 px-4 focus:ring-vision-blue-600">
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div><label class="block text-sm font-bold text-gray-700 mb-2">DNI</label><input
+                                        type="text" name="dni" required
+                                        class="block w-full rounded-lg border-gray-200 py-3 px-4 focus:ring-vision-blue-600">
+                                </div>
+                                <div><label class="block text-sm font-bold text-gray-700 mb-2">Teléfono</label><input
+                                        type="tel" name="phone" required
+                                        class="block w-full rounded-lg border-gray-200 py-3 px-4 focus:ring-vision-blue-600">
+                                </div>
+                            </div>
+                            <div><label class="block text-sm font-bold text-gray-700 mb-2">Email</label><input
+                                    type="email" name="email" required
+                                    class="block w-full rounded-lg border-gray-200 py-3 px-4 focus:ring-vision-blue-600">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">Asunto</label>
+                                <select name="subject"
+                                    class="block w-full rounded-lg border-gray-200 py-3 px-4 focus:ring-vision-blue-600">
+                                    <option>Consulta General</option>
+                                    <option>Agendar Cita</option>
+                                    <option>Presupuesto</option>
+                                </select>
+                            </div>
+                            <div><label class="block text-sm font-bold text-gray-700 mb-2">Mensaje</label><textarea
+                                    name="message" rows="4" required
+                                    class="block w-full rounded-lg border-gray-200 py-3 px-4 focus:ring-vision-blue-600"></textarea>
+                            </div>
+
+                            <button type="submit" id="home-submit-btn"
+                                class="w-full rounded-lg bg-vision-blue-600 px-6 py-3 text-center text-sm font-bold text-white shadow-md hover:bg-vision-blue-700 transition-all flex justify-center items-center gap-2">
+                                <span>Enviar Mensaje</span>
+                                <svg id="home-spinner" class="animate-spin h-5 w-5 text-white hidden"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                        stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor"
+                                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <div id="home-status" class="hidden text-center text-sm font-bold mt-2 p-2 rounded"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-400 py-16">
+        <div class="container mx-auto max-w-7xl px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-8 md:mb-0">
+                <img src="image/logovisions.png" alt="Logo Clínica Oftalmológica Visión"
+                    class="h-24 w-auto opacity-80 grayscale brightness-200"
+                    onerror="this.onerror=null; this.src='https://placehold.co/180x60/404040/9ca3af?text=Visión';">
+            </div>
+            <div class="text-center md:text-right text-sm font-light">
+                <p>© 2024 Clínica Oftalmológica Visión. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS UNIFICADOS -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // 1. ANIMACIÓN HEADER
+            const header = document.getElementById('main-header');
+            let lastScrollY = window.scrollY;
+            window.addEventListener('scroll', () => {
+                const currentScrollY = window.scrollY;
+                if (currentScrollY < lastScrollY) header.classList.remove('header-hidden');
+                else if (currentScrollY > lastScrollY && currentScrollY > 100) header.classList.add('header-hidden');
+                if (currentScrollY > 50) header.classList.add('header-scrolled');
+                else header.classList.remove('header-scrolled');
+                lastScrollY = currentScrollY;
+            });
+
+            // 2. MENÚ MÓVIL
+            const btn = document.getElementById('mobile-menu-button');
+            const overlay = document.getElementById('mobile-menu-overlay');
+            const close = document.getElementById('mobile-menu-close-button');
+            const toggleMenu = (show) => {
+                if (!overlay) return;
+                if (show) { overlay.classList.add('is-open'); document.body.style.overflow = 'hidden'; }
+                else { overlay.classList.remove('is-open'); document.body.style.overflow = 'auto'; }
+            };
+            if (btn) btn.addEventListener('click', () => toggleMenu(true));
+            if (close) close.addEventListener('click', () => toggleMenu(false));
+            if (overlay) overlay.addEventListener('click', (e) => { if (e.target === overlay) toggleMenu(false); });
+
+            // 3. CARRUSEL DOCTORES
+            const carousel = document.getElementById('doctors-carousel');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            if (prevBtn) prevBtn.addEventListener('click', () => carousel.scrollBy({ left: -320, behavior: 'smooth' }));
+            if (nextBtn) nextBtn.addEventListener('click', () => carousel.scrollBy({ left: 320, behavior: 'smooth' }));
+
+            // 4. GALERÍA SERVICIOS (MARQUEE)
+            const servicesMarquee = document.getElementById('services-marquee');
+            if (servicesMarquee) {
+                const services = [
+                    { image: 'image/cataratas.png', title: 'Cirugía de Catarata', desc: 'Recupera la transparencia de tu visión. Reemplazamos el cristalino opaco por un lente intraocular premium.' },
+                    { image: 'image/lasik.jpg', title: 'Cirugía Refractiva', desc: 'Corrige defectos visuales como miopía, hipermetropía y astigmatismo. Dile adiós a los lentes.' },
+                    { image: 'image/pterigion.png', title: 'Cirugía de Pterigión', desc: 'Eliminamos la "carnosidad" y utilizamos injertos para evitar que regrese, mejorando la estética.' },
+                    { image: 'image/glaucoma.jpg', title: 'Cirugía de Glaucoma', desc: 'Tratamientos para reducir la presión en el ojo y detener el daño al nervio óptico.' },
+                    { image: 'image/chalazion.png', title: 'Cirugía de Chalazión', desc: 'Procedimiento rápido para eliminar la inflamación o "bolita" en el párpado.' },
+                    { image: 'image/vetrectomia.png', title: 'Vitrectomía', desc: 'Cirugía de alta complejidad para tratar problemas en la retina y el humor vítreo.' },
+                    { image: 'image/estrabismo.png', title: 'Cirugía de Estrabismo', desc: 'Corrección de la alineación de los ojos para mejorar la visión binocular.' },
+                    { image: 'image/ojoseco.png', title: 'Tratamiento de Ojo Seco', desc: 'Soluciones avanzadas para la falta de lubricación ocular crónica.' }
+                ];
+                const combinedServices = [...services, ...services];
+                const cardsHTML = combinedServices.map(service => `
+                    <div class="flex-shrink-0 w-80 bg-white rounded-xl border border-gray-100 shadow-md hover:shadow-xl transition-all mx-4 overflow-hidden group">
+                        <div class="h-48 w-full overflow-hidden relative">
+                            <img src="${service.image}" alt="${service.title}" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-vision-blue-900/0 group-hover:bg-vision-blue-900/10 transition-colors duration-300"></div>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold text-gray-900 font-serif mb-3 group-hover:text-vision-blue-600 transition-colors">${service.title}</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">${service.desc}</p>
+                        </div>
+                    </div>
+                `).join('');
+                servicesMarquee.innerHTML = cardsHTML;
+                let scrollPos = 0;
+                const speed = 1.0;
+                function autoScroll() {
+                    if (!servicesMarquee.matches(':hover')) {
+                        scrollPos += speed;
+                        if (scrollPos >= servicesMarquee.scrollWidth / 2) scrollPos = 0;
+                        servicesMarquee.scrollLeft = scrollPos;
+                    } else {
+                        scrollPos = servicesMarquee.scrollLeft;
+                    }
+                    requestAnimationFrame(autoScroll);
+                }
+                requestAnimationFrame(autoScroll);
+            }
+
+            // 5. FORMULARIO N8N (HOME)
+            const form = document.getElementById('n8n-home-form');
+            if (form) {
+                form.addEventListener('submit', async function (e) {
+                    e.preventDefault();
+                    const btn = document.getElementById('home-submit-btn');
+                    const spinner = document.getElementById('home-spinner');
+                    const status = document.getElementById('home-status');
+                    const span = btn.querySelector('span');
+
+                    btn.disabled = true;
+                    spinner.classList.remove('hidden');
+                    span.textContent = 'Enviando...';
+                    status.classList.add('hidden');
+
+                    const formData = new FormData(this);
+                    const data = Object.fromEntries(formData.entries());
+                    const webhookUrl = 'https://n8n2-n8n.kskwz9.easypanel.host/webhook-test/df5b9c2b-aa87-4569-a264-126441361994';
+
+                    try {
+                        const response = await fetch(webhookUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+                        if (response.ok) {
+                            status.textContent = '¡Mensaje enviado!';
+                            status.classList.remove('hidden', 'bg-red-100', 'text-red-700');
+                            status.classList.add('bg-green-100', 'text-green-700');
+                            this.reset();
+                        } else throw new Error();
+                    } catch (e) {
+                        status.textContent = 'Error al enviar.';
+                        status.classList.remove('hidden', 'bg-green-100', 'text-green-700');
+                        status.classList.add('bg-red-100', 'text-red-700');
+                    } finally {
+                        btn.disabled = false;
+                        spinner.classList.add('hidden');
+                        span.textContent = 'Enviar Mensaje';
+                    }
+                });
+            }
+
+            feather.replace();
+        });
+    </script>
+</body>
+
+</html>
